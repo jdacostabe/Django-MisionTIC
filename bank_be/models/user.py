@@ -44,6 +44,3 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return 'id: {0}, usuario: {1}'.format(self.id, self.username)
-
-    class Meta:
-        app_label = 'bank_be'

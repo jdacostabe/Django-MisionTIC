@@ -5,14 +5,14 @@ from bank_be.serializers.accountSerializer import AccountSerializer
 
 class UserSerializer(serializers.ModelSerializer):
 
-    account = AccountSerializer(many=False);
+    accountAssociated = AccountSerializer(many=False)
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'password', 'name', 'email', 'account']
+        fields = ['id', 'username', 'password', 'name', 'email', 'accountAssociated']
 
     def create(self, validated_data):
-        accountData = validated_data.pop('account')
+        accountData = validated_data.pop('accountAssociated')
         userInstance = User.objects.create(**validated_data)
-        Account.objects.create(user=userInstance, **accountData)
+        Account.objects.create(user=userInstance, **accountData[0])
         return userInstance

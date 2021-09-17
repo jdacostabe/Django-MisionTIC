@@ -19,3 +19,15 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+from django.urls import path
+from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
+from bank_be.views import views
+
+urlpatterns = [
+    path('token/', TokenObtainPairView.as_view()),
+    path('token/refresh/', TokenRefreshView.as_view()),
+    path('token/verify/', views.VerifyTokenView.as_view()),
+    path('user/', views.UserListView.as_view()),
+    path('user/<int:pk>/', views.UserDetailView.as_view())
+]

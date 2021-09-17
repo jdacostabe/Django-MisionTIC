@@ -41,6 +41,3 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'username'
-
-    def __str__(self):
-        return 'id: {0}, usuario: {1}'.format(self.id, self.username)

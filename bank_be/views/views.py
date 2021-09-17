@@ -8,11 +8,11 @@ from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 from bank_be.models.user import User
 from bank_be.serializers.userSerializer import UserSerializer
 
-class UserListView(generics.ListCreateAPIView):
+class UserListView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-class UserDetailView(generics.RetrieveDestroyAPIView):
+class UserDetailView(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
